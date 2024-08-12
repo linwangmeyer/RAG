@@ -2,8 +2,15 @@ import argparse
 from langchain_chroma import Chroma
 from langchain.prompts import ChatPromptTemplate
 from langchain_community.llms.ollama import Ollama
+from langchain_community.embeddings.ollama import OllamaEmbeddings
 
-from get_embedding_function import get_embedding_function
+def get_embedding_function():
+    #embeddings = BedrockEmbeddings(
+    #    credentials_profile_name="default", region_name="us-east-1"
+    #)
+    embeddings = OllamaEmbeddings(model="mxbai-embed-large")
+    return embeddings
+
 
 CHROMA_PATH = "chroma"
 

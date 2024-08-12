@@ -4,9 +4,15 @@ import shutil
 from langchain.document_loaders.pdf import PyPDFDirectoryLoader
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain.schema.document import Document
-from get_embedding_function import get_embedding_function
 from langchain_chroma import Chroma
+from langchain_community.embeddings.ollama import OllamaEmbeddings
 
+def get_embedding_function():
+    #embeddings = BedrockEmbeddings(
+    #    credentials_profile_name="default", region_name="us-east-1"
+    #)
+    embeddings = OllamaEmbeddings(model="mxbai-embed-large")
+    return embeddings
 
 CHROMA_PATH = "chroma"
 DATA_PATH = "data"
